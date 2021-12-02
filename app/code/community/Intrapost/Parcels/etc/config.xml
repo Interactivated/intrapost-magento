@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Intrapost_Parcels extension
+ *
+ * @category       TrustSpot Extensions
+ * @package        TrustSpot_OrderNotifier
+ * @copyright      Copyright (c) 2015
+ * @license        http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Intrapost_Parcels>
+            <version>1.0.0</version>
+        </Intrapost_Parcels>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <intrapost after="Mage_Adminhtml">Intrapost_Parcels_Adminhtml</intrapost>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <global>
+        <resources>
+            <intrapost_parcels_setup>
+                <setup>
+                    <module>Intrapost_Parcels</module>
+                </setup>
+            </intrapost_parcels_setup>
+        </resources>
+        <helpers>
+            <intrapost>
+                <class>Intrapost_Parcels_Helper</class>
+            </intrapost>
+        </helpers>
+        <models>
+            <intrapost>
+                <class>Intrapost_Parcels_Model</class>
+                <resourceModel>intrapost_resource</resourceModel>
+            </intrapost>
+            <intrapost_resource>
+                <class>Intrapost_Parcels_Model_Resource</class>
+                <entities>
+                    <parcel>
+                        <table>intrapost_parcels</table>
+                    </parcel>
+                </entities>
+            </intrapost_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <admihtml_order_grid_intrapost_massprintlabels>
+                        <type>singleton</type>
+                        <class>intrapost/observer</class>
+                        <method>massPrintLabels</method>
+                    </admihtml_order_grid_intrapost_massprintlabels>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
+    </adminhtml>
+    <default>
+        <intrapost>
+            <general>
+                <label_format_type>1</label_format_type>
+                <mailtrackandtrace>1</mailtrackandtrace>
+            </general>
+        </intrapost>
+    </default>
+</config>

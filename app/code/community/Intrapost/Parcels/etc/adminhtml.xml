@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <intrapost translate="title" module="intrapost">
+                                        <title>Intrapost Parcels</title>
+                                    </intrapost>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <intrapost translate="title" module="intrapost">
+                        <title>TrustSpot</title>
+                        <children>
+
+                        </children>
+                    </intrapost>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
